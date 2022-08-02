@@ -1,0 +1,31 @@
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/email-contact.png')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Contact Me</h1>
+            <span class="subheading">Have questions? Reach out and we can schedule a meeting.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p>Want to get in touch? Feel free to contact me at <a href="mailto:contact@sergioburigana.com">contact@sergioburigana.com</a> and I will get back to you within 2 business days. In alternative you can contact me through LinkedIn, my profile is linked below.</p>
+
+
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  {% include "footer.html" %}
