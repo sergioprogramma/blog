@@ -54,13 +54,11 @@ def admin_only(f):
         return f(*args, **kwargs)
     return decorated_function
 
-def login_required(f):
+def loggedin_only(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if g.user is None:
-            return redirect('/login')
-        return f(*args, **kwargs)
-    return decorated_function
+        if not current_user.is_authenticated:
+            return redirect(url_for("login"))
 
 ##CONFIGURE TABLE
 class BlogPost(db.Model):
@@ -140,7 +138,7 @@ def get_all_posts():
 
 
 @app.route("/post/<int:post_id>")
-@login_required
+@loggedin_only
 def show_post(post_id):
     requested_post = BlogPost.query.get(post_id)
     return render_template("post.html", post=requested_post)
