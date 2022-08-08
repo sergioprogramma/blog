@@ -54,21 +54,13 @@ def admin_only(f):
         return f(*args, **kwargs)
     return decorated_function
 
-def admin_only(f):
+def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if session['logged_in'] == True:
-            session['logged_in'] = True
-            return redirect(url_for('panel'))
-
-def logged_in(f):
-    @wraps(f)
-    def decorated_func(*args, **kwargs):
-        if session.get("logged_in"):
-            return f(*args, **kwargs)
-        else:
-            return redirect("/")
-    return decorated_func
+        if id.user is None:
+            return redirect('/login')
+        return f(*args, **kwargs)
+    return decorated_function
 
 ##CONFIGURE TABLE
 class BlogPost(db.Model):
@@ -148,7 +140,7 @@ def get_all_posts():
 
 
 @app.route("/post/<int:post_id>")
-@logged_in
+@login_required
 def show_post(post_id):
     requested_post = BlogPost.query.get(post_id)
     return render_template("post.html", post=requested_post)
