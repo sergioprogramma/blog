@@ -59,6 +59,7 @@ def loggedin_only(f):
     def decorated_function(*args, **kwargs):
         if not current_user.is_authenticated:
             return redirect(url_for("/login"))
+    return decorated_function
 
 ##CONFIGURE TABLE
 class BlogPost(db.Model):
@@ -138,6 +139,7 @@ def get_all_posts():
 
 
 @app.route("/post/<int:post_id>")
+@loggedin_only
 def show_post(post_id):
     requested_post = BlogPost.query.get(post_id)
     return render_template("post.html", post=requested_post)
