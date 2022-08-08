@@ -8,7 +8,6 @@ from flask_ckeditor import CKEditor, CKEditorField
 from datetime import date
 from wtforms import StringField, SubmitField, PasswordField
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
-from flask_gravatar import Gravatar
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 
