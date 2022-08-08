@@ -1,5 +1,5 @@
-account_sid = "AC25aad92a99c628e1cc28a5e23947de08"
-auth_token = "8df484fd134e78df6d373eb8dd06ae19"
+account_sid = "-"
+auth_token = "-"
 
 from twilio.rest import Client
 from twilio.http.http_client import TwilioHttpClient
@@ -15,8 +15,8 @@ class NotificationManager:
         message = client.messages \
             .create(
             body=f"Important message! The flight from {dep_city}-{dep_airport} to {ar_city}-{ar_airport} has a new lowest price of ${price}. From {first_day} to {last_day}",
-            from_="+16812525644",
-            to="+16473940639"
+            from_="-",
+            to="-"
         )
         print(message.status)
 

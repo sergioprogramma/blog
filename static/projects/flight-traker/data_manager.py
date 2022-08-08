@@ -1,6 +1,6 @@
 
 
-SHEETY_PRICES_ENDPOINT = 'https://api.sheety.co/7b59afdfaacb1f739489f753b97528e4/flightDealsSergio/sheet1'
+SHEETY_PRICES_ENDPOINT = '-'
 
 import requests
 
