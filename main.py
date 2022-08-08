@@ -59,6 +59,7 @@ def loggedin_only(f):
     def decorated_function(*args, **kwargs):
         if not current_user.is_authenticated:
             return redirect(url_for("/login"))
+        return f(*args, **kwargs)
     return decorated_function
 
 ##CONFIGURE TABLE
