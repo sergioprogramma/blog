@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, abort, session
+from flask import Flask, render_template, redirect, url_for, flash, abort, session, g
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
@@ -57,7 +57,7 @@ def admin_only(f):
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if id.user is None:
+        if g.user is None:
             return redirect('/login')
         return f(*args, **kwargs)
     return decorated_function
