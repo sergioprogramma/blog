@@ -58,7 +58,7 @@ def loggedin_only(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if not current_user.is_authenticated:
-            flash("You need to log in to have access to the post")
+            flash("Log in to have access to the post!")
             return redirect(url_for("login"))
         return f(*args, **kwargs)
     return decorated_function
