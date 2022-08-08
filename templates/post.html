@@ -30,9 +30,12 @@
             <div class="clearfix">
                <a class="btn btn-primary float-right" href="{{post.file_url}}">Dowload File</a>
         </div>
-           <div class="clearfix">
-               <a class="btn btn-primary float-right" href="{{url_for('edit_post', post_id=post.id)}}">Edit Post</a>
-        </div>
+             {% if current_user.id == 1: %}
+                <div class="clearfix">
+                    <a class="btn btn-primary float-right" href="{{url_for('edit_post', post_id=post.id)}}">Edit Post</a>
+                </div>
+            {% endif %}
+
           </div>
       </div>
     </div>
