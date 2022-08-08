@@ -54,11 +54,11 @@ def admin_only(f):
         return f(*args, **kwargs)
     return decorated_function
 
-# def loggedin_only(f):
-#     @wraps(f)
-#     def decorated_function(*args, **kwargs):
-#         if not current_user.is_authenticated:
-#             return redirect(url_for("/login"))
+def loggedin_only(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_authenticated:
+            return redirect(url_for("/login"))
 
 ##CONFIGURE TABLE
 class BlogPost(db.Model):
